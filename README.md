@@ -8,8 +8,8 @@ in a local Electron application.
 
 [Product website](https://qwertas.nrek.co) · [Source repository](https://github.com/nrek/qwertas)
 
-QWERTAS is an active prototype. The source is usable and tested, but public binaries are not yet signed,
-notarized, or published as stable releases.
+QWERTAS is an active prototype. Multi-platform installers can be published through GitHub Releases
+via CI; builds are still unsigned and unnotarized.
 
 ## Overview
 
@@ -53,8 +53,20 @@ Build each release on its matching operating system: Windows on Windows, macOS o
 exports cover Intel and Apple silicon; Windows and Linux currently target x64. Artifacts are written to `release/`.
 
 The builds are unsigned. Windows SmartScreen shows "Windows protected your PC"; macOS Gatekeeper blocks an
-unnotarized app by default. Code signing, Apple notarization, Linux repository signing, checksums, and automated
-GitHub Releases publishing remain release work—not packaging claims.
+unnotarized app by default. Code signing, Apple notarization, and Linux repository signing remain release work.
+
+### GitHub Actions release
+
+Push a version tag to publish Windows, macOS, and Linux installers to GitHub Releases (and feed
+https://qwertas.nrek.co/downloads/):
+
+```bash
+git tag v0.2.0
+git push origin v0.2.0
+```
+
+Or run the **Release** workflow manually from the Actions tab. Each job builds on the matching runner
+(`windows-latest`, `macos-latest`, `ubuntu-latest`). A `SHA256SUMS.txt` file is attached to the Release.
 
 The Windows installer installs per-user, allows the destination folder to be selected, and adds Desktop and Start
 Menu shortcuts. The bundled `examples/*.qwertas` ship under `resources/examples`, and **Import score** opens that
