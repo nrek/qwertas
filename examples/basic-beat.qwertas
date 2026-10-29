@@ -1,0 +1,7 @@
+@title Basic Beat
+@tempo 120
+@grid 1/8
+@profile Drum Machine
+
+<KICK>:1 <HAT>:1 <SNARE>:1 <HAT>:1 |
+<KICK>:1 <HAT>:1 <CLAP>:1 <OHAT>:1 |

@@ -1,0 +1,20 @@
+{
+  "tempo": 108,
+  "grid": 16,
+  "units": 24,
+  "events": [
+    { "type": "modifier", "startUnit": 0, "durationUnits": 0, "layer": "base" },
+    { "type": "rest", "startUnit": 0, "durationUnits": 1 },
+    { "type": "note", "startUnit": 1, "durationUnits": 1, "physicalKey": "KeyI", "layer": "base" },
+    { "type": "note", "startUnit": 2, "durationUnits": 1, "physicalKey": "KeyI", "layer": "base" },
+    { "type": "note", "startUnit": 3, "durationUnits": 1, "physicalKey": "KeyI", "layer": "base" },
+    { "type": "note", "startUnit": 4, "durationUnits": 8, "physicalKey": "KeyR", "layer": "base" },
+    { "type": "bar", "startUnit": 12, "durationUnits": 0 },
+    { "type": "rest", "startUnit": 12, "durationUnits": 1 },
+    { "type": "note", "startUnit": 13, "durationUnits": 1, "physicalKey": "KeyY", "layer": "base" },
+    { "type": "note", "startUnit": 14, "durationUnits": 1, "physicalKey": "KeyY", "layer": "base" },
+    { "type": "note", "startUnit": 15, "durationUnits": 1, "physicalKey": "KeyY", "layer": "base" },
+    { "type": "note", "startUnit": 16, "durationUnits": 8, "physicalKey": "KeyE", "layer": "base" },
+    { "type": "bar", "startUnit": 24, "durationUnits": 0 }
+  ]
+}

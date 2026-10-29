@@ -1,0 +1,148 @@
+{
+  "name": "qwertas",
+  "version": "0.2.0",
+  "productName": "QWERTAS",
+  "description": "A software-defined musical instrument played with an ordinary computer keyboard",
+  "author": "Enrique Gutierrez",
+  "license": "MIT",
+  "homepage": "https://qwertas.nrek.co",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nrek/qwertas.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nrek/qwertas/issues"
+  },
+  "keywords": [
+    "electron",
+    "music",
+    "instrument",
+    "synthesizer",
+    "web-audio"
+  ],
+  "private": true,
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "concurrently -k \"npm:dev:web\" \"npm:dev:electron\"",
+    "dev:web": "vite --host 127.0.0.1 --port 3277",
+    "dev:electron": "npm run build:electron && wait-on tcp:3277 && cross-env QWERT_DEV_URL=http://127.0.0.1:3277 electron .",
+    "start": "npm run build:web && npm run build:electron && electron .",
+    "build:web": "tsc --noEmit && vite build",
+    "build:electron": "tsc -p electron/tsconfig.json",
+    "typecheck": "tsc --noEmit && tsc -p electron/tsconfig.json --noEmit",
+    "test": "vitest run",
+    "test:smoke": "npm run build:web && npm run build:electron && cross-env QWERT_SMOKE=1 electron .",
+    "build": "npm run build:web && npm run build:electron",
+    "dist": "npm run dist:win",
+    "dist:win": "npm run build && electron-builder --win nsis zip --x64",
+    "dist:win:dir": "npm run build && electron-builder --win dir --x64",
+    "dist:mac": "npm run build && electron-builder --mac dmg zip --x64 --arm64",
+    "dist:linux": "npm run build && electron-builder --linux AppImage deb --x64"
+  },
+  "build": {
+    "appId": "co.nrek.qwertas",
+    "productName": "QWERTAS",
+    "copyright": "Copyright © 2026 Enrique Gutierrez",
+    "asar": true,
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "examples",
+        "to": "examples",
+        "filter": [
+          "*.qwertas"
+        ]
+      }
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "QWERTAS-${version}-windows-${arch}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "QWERTAS",
+      "artifactName": "QWERTAS-Setup-${version}-${arch}.${ext}"
+    },
+    "mac": {
+      "category": "public.app-category.music",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "artifactName": "QWERTAS-${version}-mac-${arch}.${ext}"
+    },
+    "linux": {
+      "category": "Audio;AudioVideo;",
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "deb",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "QWERTAS-${version}-linux-${arch}.${ext}"
+    }
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^7.3.1",
+    "@fortawesome/free-solid-svg-icons": "^7.3.1",
+    "@fortawesome/react-fontawesome": "^3.5.0",
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
+    "electron": "^44.3.0",
+    "electron-builder": "^26.18.0",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.7",
+    "vitest": "^4.1.8",
+    "wait-on": "^8.0.2"
+  }
+}

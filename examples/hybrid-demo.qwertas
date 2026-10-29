@@ -1,0 +1,10 @@
+@title Hybrid Demo
+@tempo 112
+@grid 1/16
+@root F#
+@scale phrygian_dominant
+@profile Dark Techno
+
+{base} z:2 x:2 c:2 v:2 |
+{shift} q:1 .:1 w:1 .:1 e:1 .:1 r:1 .:1 |
+<KICK>:2 <HAT>:1 <HAT>:1 <SNARE>:2 <HAT>:1 <OHAT>:1 |

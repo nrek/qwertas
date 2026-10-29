@@ -1,0 +1,10 @@
+@title Beethoven 5th — Opening Fidelity Test
+@tempo 108
+@grid 1/16
+@root C
+@scale chromatic
+@profile Ambient
+
+{base}
+.:1 i:1 i:1 i:1 r:8 |
+.:1 y:1 y:1 y:1 e:8 |
