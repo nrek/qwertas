@@ -125,8 +125,7 @@
           ]
         }
       ],
-      "artifactName": "QWERTAS-${version}-linux-x64.${ext}",
-      "desktopName": "qwertas"
+      "artifactName": "QWERTAS-${version}-linux-x64.${ext}"
     },
     "publish": null
   },
