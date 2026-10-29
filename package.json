@@ -3,7 +3,11 @@
   "version": "0.2.0",
   "productName": "QWERTAS",
   "description": "A software-defined musical instrument played with an ordinary computer keyboard",
-  "author": "Enrique Gutierrez",
+  "author": {
+    "name": "Enrique Gutierrez",
+    "email": "me@nrek.co",
+    "url": "https://nrek.co"
+  },
   "license": "MIT",
   "homepage": "https://qwertas.nrek.co",
   "repository": {
@@ -34,10 +38,10 @@
     "test:smoke": "npm run build:web && npm run build:electron && cross-env QWERT_SMOKE=1 electron .",
     "build": "npm run build:web && npm run build:electron",
     "dist": "npm run dist:win",
-    "dist:win": "npm run build && electron-builder --win nsis zip --x64",
-    "dist:win:dir": "npm run build && electron-builder --win dir --x64",
-    "dist:mac": "npm run build && electron-builder --mac dmg zip --x64 --arm64",
-    "dist:linux": "npm run build && electron-builder --linux AppImage deb --x64"
+    "dist:win": "npm run build && electron-builder --win nsis zip --x64 --publish never",
+    "dist:win:dir": "npm run build && electron-builder --win dir --x64 --publish never",
+    "dist:mac": "npm run build && electron-builder --mac dmg zip --x64 --arm64 --publish never",
+    "dist:linux": "npm run build && electron-builder --linux AppImage deb --x64 --publish never"
   },
   "build": {
     "appId": "co.nrek.qwertas",
@@ -121,7 +125,8 @@
           ]
         }
       ],
-      "artifactName": "QWERTAS-${version}-linux-${arch}.${ext}"
+      "artifactName": "QWERTAS-${version}-linux-x64.${ext}",
+      "desktopName": "qwertas"
     },
     "publish": null
   },
