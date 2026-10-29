@@ -137,18 +137,10 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.tag.outputs.name }}
-          name: QWERTAS ${{ steps.tag.outputs.name }}
           draft: false
           prerelease: false
-          generate_release_notes: true
-          body: |
-            Free desktop builds of QWERTAS for Windows, macOS, and Linux.
-
-            **Unsigned / unnotarized.** Windows SmartScreen and macOS Gatekeeper warnings are expected. Do not disable OS security controls as a routine install step.
-
-            Installers are also linked from https://qwertas.nrek.co/downloads/
-
-            SHA-256 digests are in `SHA256SUMS.txt`.
+          # Omit name/body so an existing marketing release notes stay intact.
+          fail_on_unmatched_files: true
           files: |
             dist-release/*
         env:
